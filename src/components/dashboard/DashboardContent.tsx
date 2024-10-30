@@ -5,7 +5,7 @@ import ContentBlock from "../layout/ContentBlock";
 
 export default function DashboardContent() {
   return (
-    <div className="grid md:grid-cols-3 md:grid-rows-[45px_1fr] grid-rows-[45px_300px_500px] gap-4 md:h-[720px] mt-10">
+    <div className="grid md:grid-cols-3 md:grid-rows-[45px_1fr] grid-rows-[45px_300px_500px] gap-4 md:h-[700px] mt-10">
       <div className="md:row-start-1 md:row-span-1 md:col-start-1 md:col-span-1">
         <SearchForm />
       </div>

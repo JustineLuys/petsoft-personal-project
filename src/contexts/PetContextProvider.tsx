@@ -6,6 +6,7 @@ import { Pet } from "@prisma/client";
 import {
   createContext,
   startTransition,
+  useCallback,
   useMemo,
   useOptimistic,
   useState,
@@ -15,6 +16,7 @@ type TPetContext = {
   optimisticAndFilteredPets: Pet[];
   selectedPetId: string | null;
   selectedPet: Pet | undefined;
+  petCount: number;
   handleSelectedPetId: (id: string) => void;
   handleAddPet: (newPet: unknown) => Promise<string | null>;
   handleEditPet: (
@@ -56,6 +58,8 @@ export default function PetContextProvider({
     }
   );
 
+  const petCount = optimisticPets.length;
+
   const optimisticAndFilteredPets = !searchText
     ? optimisticPets
     : optimisticPets.filter((pet) =>
@@ -68,68 +72,88 @@ export default function PetContextProvider({
   );
 
   // handlers
-  const handleSelectedPetId = (petId: Pet["id"]) => {
+  const handleSelectedPetId = useCallback((petId: Pet["id"]) => {
     setSelectedPetId(petId);
-  };
+  }, []);
 
-  const handleAddPet = async (newPet: unknown) => {
-    const validatedPet = petFormSchema.safeParse(newPet);
-    if (!validatedPet.success) {
-      return validatedPet.error.errors[0].message;
-    }
+  const handleAddPet = useCallback(
+    async (newPet: unknown) => {
+      const validatedPet = petFormSchema.safeParse(newPet);
+      if (!validatedPet.success) {
+        return validatedPet.error.errors[0].message;
+      }
 
-    setOptimisticPets({
-      action: "add",
-      payload: { ...validatedPet.data, id: new Date().getTime().toString() },
-    });
+      setOptimisticPets({
+        action: "add",
+        payload: { ...validatedPet.data, id: new Date().getTime().toString() },
+      });
 
-    const error = await addPet(validatedPet.data);
-    if (error && typeof error !== "string") return error.message;
-    return null;
-  };
+      const error = await addPet(validatedPet.data);
+      if (error && typeof error !== "string") return error.message;
+      return null;
+    },
+    [setOptimisticPets]
+  );
 
-  const handleEditPet = async (newPetData: unknown, petId: Pet["id"]) => {
-    const validatedPet = petFormSchema.safeParse(newPetData);
-    if (!validatedPet.success) {
-      return validatedPet.error.errors[0].message;
-    }
-    setOptimisticPets({
-      action: "edit",
-      payload: { petId, newPetData },
-    });
-
-    const error = await editPet(validatedPet.data, petId);
-
-    if (error) return error.message;
-    return null;
-  };
-
-  const handleDeletePet = async (petId: Pet["id"]) => {
-    startTransition(() =>
+  const handleEditPet = useCallback(
+    async (newPetData: unknown, petId: Pet["id"]) => {
+      const validatedPet = petFormSchema.safeParse(newPetData);
+      if (!validatedPet.success) {
+        return validatedPet.error.errors[0].message;
+      }
       setOptimisticPets({
         action: "edit",
-        payload: { petId },
-      })
-    );
-    const error = await deletePet(petId);
+        payload: { petId, newPetData },
+      });
 
-    if (error && typeof error !== "string") return error.message;
-    return null;
-  };
+      const error = await editPet(validatedPet.data, petId);
+
+      if (error) return error.message;
+      return null;
+    },
+    [setOptimisticPets]
+  );
+
+  const handleDeletePet = useCallback(
+    async (petId: Pet["id"]) => {
+      startTransition(() =>
+        setOptimisticPets({
+          action: "edit",
+          payload: { petId },
+        })
+      );
+      const error = await deletePet(petId);
+
+      if (error && typeof error !== "string") return error.message;
+      return null;
+    },
+    [setOptimisticPets]
+  );
+
+  const contextValue = useMemo(
+    () => ({
+      optimisticAndFilteredPets,
+      selectedPetId,
+      selectedPet,
+      petCount,
+      handleSelectedPetId,
+      handleAddPet,
+      handleEditPet,
+      handleDeletePet,
+    }),
+    [
+      optimisticAndFilteredPets,
+      selectedPetId,
+      selectedPet,
+      petCount,
+      handleSelectedPetId,
+      handleAddPet,
+      handleEditPet,
+      handleDeletePet,
+    ]
+  );
 
   return (
-    <PetContext.Provider
-      value={{
-        optimisticAndFilteredPets,
-        selectedPetId,
-        selectedPet,
-        handleSelectedPetId,
-        handleAddPet,
-        handleEditPet,
-        handleDeletePet,
-      }}
-    >
-      {children}
-    </PetContext.Provider>
+    <PetContext.Provider value={contextValue}>{children}</PetContext.Provider>
   );
 }
