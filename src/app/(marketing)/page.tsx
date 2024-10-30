@@ -25,7 +25,7 @@ export default function Home() {
         </H1>
         <HomeDescription />
         <div className="flex gap-4">
-          <Link href="/sign-up">
+          <Link href="/signup">
             <Button>Get started</Button>
           </Link>
           <Link href="/login">

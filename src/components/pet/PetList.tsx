@@ -5,7 +5,7 @@ import PetButton from "./PetButton";
 import PetListItem from "./PetListItem";
 export default function PetList() {
   const {
-    sortedOptimisticPets: pets,
+    optimisticAndFilteredPets: pets,
     handleSelectedPetId,
     selectedPetId,
   } = usePetContext();

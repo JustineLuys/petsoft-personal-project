@@ -3,19 +3,21 @@ import Image from "next/image";
 import { Button } from "../ui/button";
 import PetButton from "./PetButton";
 import { usePetContext } from "@/lib/hooks";
+import { useTransition } from "react";
 
 export default function PetDetails() {
   const {
     selectedPet,
     handleDeletePet,
     selectedPetId,
-    sortedOptimisticPets: pets,
+    optimisticAndFilteredPets: pets,
   } = usePetContext();
 
+  const [isPending, startTransition] = useTransition();
   if (!pets.length) return <EmptyPets />;
   if (!selectedPet) return <EmptyPetDetails />;
   return (
-    <section className="h-full text-black bg-black/[0.02]">
+    <section className="h-full text-black bg-black/[3%]">
       <div className="h-[150px] bg-white flex items-center justify-between px-10">
         <div className="flex items-center gap-6">
           <Image
@@ -30,9 +32,14 @@ export default function PetDetails() {
         <div className="flex items-center gap-4">
           <PetButton actionType="edit" />
           <Button
+            disabled={isPending}
             variant="destructive"
             size="destructive"
-            onClick={async () => await handleDeletePet(selectedPetId!)}
+            onClick={async () => {
+              startTransition(async () => {
+                await handleDeletePet(selectedPetId!);
+              });
+            }}
           >
             <p className="text-lg">Checkout</p>
           </Button>

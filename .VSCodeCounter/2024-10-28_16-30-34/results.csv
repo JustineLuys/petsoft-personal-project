@@ -1,0 +1,49 @@
+"filename", "language", "TypeScript", "TypeScript JSX", "CSS", "comment", "blank", "total"
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\app\(app)\app\account\page.tsx", "TypeScript JSX", 0, 3, 0, 0, 1, 4
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\app\(app)\app\dashboard\page.tsx", "TypeScript JSX", 0, 10, 0, 0, 2, 12
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\app\(app)\layout.tsx", "TypeScript JSX", 0, 32, 0, 0, 3, 35
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\app\(auth)\layout.tsx", "TypeScript JSX", 0, 15, 0, 0, 2, 17
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\app\(auth)\login\page.tsx", "TypeScript JSX", 0, 9, 0, 0, 3, 12
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\app\(auth)\sign-up\page.tsx", "TypeScript JSX", 0, 9, 0, 0, 3, 12
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\app\(marketing)\page.tsx", "TypeScript JSX", 0, 39, 0, 0, 2, 41
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\app\api\auth\[...nextauth]\route.ts", "TypeScript", 0, 0, 0, 0, 1, 1
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\app\globals.css", "CSS", 0, 0, 64, 0, 2, 66
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\app\layout.tsx", "TypeScript JSX", 0, 17, 0, 0, 3, 20
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\H1.tsx", "TypeScript JSX", 0, 11, 0, 0, 2, 13
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\HomeDescription.tsx", "TypeScript JSX", 0, 9, 0, 0, 2, 11
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\Logo.tsx", "TypeScript JSX", 0, 14, 0, 0, 2, 16
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\auth\AuthPage.tsx", "TypeScript JSX", 0, 30, 0, 0, 2, 32
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\dashboard\Branding.tsx", "TypeScript JSX", 0, 10, 0, 0, 2, 12
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\dashboard\DashboardContent.tsx", "TypeScript JSX", 0, 23, 0, 0, 2, 25
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\dashboard\DashboardHeader.tsx", "TypeScript JSX", 0, 11, 0, 0, 2, 13
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\dashboard\GuestCount.tsx", "TypeScript JSX", 0, 8, 0, 0, 1, 9
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\forms\AuthForm.tsx", "TypeScript JSX", 0, 27, 0, 0, 2, 29
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\forms\PetForm.tsx", "TypeScript JSX", 0, 103, 0, 0, 5, 108
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\forms\SearchForm.tsx", "TypeScript JSX", 0, 16, 0, 0, 2, 18
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\layout\Background.tsx", "TypeScript JSX", 0, 5, 0, 0, 1, 6
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\layout\ContentBlock.tsx", "TypeScript JSX", 0, 20, 0, 0, 3, 23
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\layout\Footer.tsx", "TypeScript JSX", 0, 7, 0, 0, 1, 8
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\layout\Header.tsx", "TypeScript JSX", 0, 59, 0, 0, 6, 65
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\pet\PetButton.tsx", "TypeScript JSX", 0, 46, 0, 0, 2, 48
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\pet\PetDetails.tsx", "TypeScript JSX", 0, 68, 0, 0, 5, 73
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\pet\PetList.tsx", "TypeScript JSX", 0, 37, 0, 0, 4, 41
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\pet\PetListItem.tsx", "TypeScript JSX", 0, 33, 0, 0, 2, 35
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\ui\button.tsx", "TypeScript JSX", 0, 58, 0, 0, 6, 64
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\ui\dialog.tsx", "TypeScript JSX", 0, 109, 0, 0, 14, 123
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\ui\form.tsx", "TypeScript JSX", 0, 153, 0, 0, 26, 179
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\ui\input.tsx", "TypeScript JSX", 0, 21, 0, 0, 5, 26
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\ui\label.tsx", "TypeScript JSX", 0, 21, 0, 0, 6, 27
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\ui\sonner.tsx", "TypeScript JSX", 0, 26, 0, 0, 6, 32
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\components\ui\textarea.tsx", "TypeScript JSX", 0, 20, 0, 0, 5, 25
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\contexts\PetContextProvider.tsx", "TypeScript JSX", 0, 121, 0, 2, 19, 142
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\contexts\SearchFormContextProvider.tsx", "TypeScript JSX", 0, 27, 0, 4, 6, 37
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\lib\actions.ts", "TypeScript", 51, 0, 0, 1, 3, 55
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\lib\auth.ts", "TypeScript", 22, 0, 0, 0, 4, 26
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\lib\db.ts", "TypeScript", 10, 0, 0, 0, 6, 16
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\lib\hooks.ts", "TypeScript", 20, 0, 0, 8, 6, 34
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\lib\schema.ts", "TypeScript", 33, 0, 0, 0, 2, 35
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\lib\server-utils.ts", "TypeScript", 18, 0, 0, 0, 3, 21
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\lib\types.ts", "TypeScript", 4, 0, 0, 0, 3, 7
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\lib\utils.ts", "TypeScript", 6, 0, 0, 0, 2, 8
+"c:\Users\justi\OneDrive\Documents\petsoft-personal-project\src\middleware.ts", "TypeScript", 4, 0, 0, 0, 1, 5
+"Total", "-", 168, 1227, 64, 15, 193, 1667

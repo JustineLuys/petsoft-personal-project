@@ -32,3 +32,27 @@ export const petFormSchema = z
       data.imageUrl ||
       "https://cdn.oneesports.gg/cdn-data/2023/05/Anime_DemonSlayer_MuichiroTokito_MistHashira_2-1024x576.webp",
   }));
+
+export const signUpFormSchema = z.object({
+  email: z
+    .string()
+    .min(1, {
+      message: "Email is required",
+    })
+    .email({
+      message: "Invalid email address",
+    }),
+  password: z.string().min(1, { message: "Password is required" }),
+});
+
+export const logInFormSchema = z.object({
+  email: z
+    .string()
+    .min(1, {
+      message: "Email is required",
+    })
+    .email({
+      message: "Invalid email address",
+    }),
+  password: z.string().min(1, { message: "Password is required" }),
+});

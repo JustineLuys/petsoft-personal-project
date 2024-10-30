@@ -11,6 +11,7 @@ import PetForm from "../forms/PetForm";
 import { useState } from "react";
 import { PetFormActions } from "@/lib/types";
 import { cn } from "@/lib/utils";
+import { flushSync } from "react-dom";
 
 type PetButtonProps = {
   actionType: PetFormActions;
@@ -19,9 +20,7 @@ type PetButtonProps = {
 export default function PetButton({ actionType, className }: PetButtonProps) {
   const text = actionType === "add" ? "+" : "Edit Pet";
   const [isOpen, setIsOpen] = useState(false);
-  const handleFormSubmit = () => {
-    setIsOpen(false);
-  };
+
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
       <DialogTrigger asChild>
@@ -40,7 +39,12 @@ export default function PetButton({ actionType, className }: PetButtonProps) {
             {actionType === "add" ? "Add a new pet" : " Edit pet"}
           </DialogTitle>
         </DialogHeader>
-        <PetForm onFormSubmit={handleFormSubmit} actionType={actionType} />
+        <PetForm
+          onFormSubmit={() => {
+            flushSync(() => setIsOpen(false));
+          }}
+          actionType={actionType}
+        />
       </DialogContent>
     </Dialog>
   );

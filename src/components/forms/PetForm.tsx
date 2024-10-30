@@ -38,16 +38,26 @@ export default function PetForm({ onFormSubmit, actionType }: PetFormProps) {
     onFormSubmit();
     const result = await trigger();
     if (!result) return;
+
+    toast.success(
+      `Pet has been successfully ${
+        actionType === "edit" ? "updated" : "added"
+      }.`
+    );
     const petData = {
       ...getValues(),
       imageUrl:
         getValues("imageUrl") ||
         "https://cdn.oneesports.gg/cdn-data/2023/05/Anime_DemonSlayer_MuichiroTokito_MistHashira_2-1024x576.webp",
     };
+
     if (actionType === "add") {
       const error = await handleAddPet(petData);
-      if (error) toast.warning(error);
+      if (error) {
+        toast.warning(error);
+      }
     }
+
     if (actionType === "edit") {
       const error = await handleEditPet(petData, selectedPetId!);
       if (error) toast.warning(error);
@@ -57,31 +67,41 @@ export default function PetForm({ onFormSubmit, actionType }: PetFormProps) {
   return (
     <form action={handleAction} className="flex flex-col gap-4 justify-center">
       <div className="space-y-2">
-        <Label htmlFor="name">Pet Name</Label>
+        <Label htmlFor="name" className="text-base">
+          Pet Name
+        </Label>
         <Input type="text" id="name" {...register("name")} />
         {errors.name && <p className="text-red-500">{errors.name.message}</p>}
       </div>
       <div className="space-y-2">
-        <Label htmlFor="ownerName">Owner Name</Label>
+        <Label htmlFor="ownerName" className="text-base">
+          Owner Name
+        </Label>
         <Input type="text" id="ownerName" {...register("ownerName")} />
         {errors.ownerName && (
           <p className="text-red-500">{errors.ownerName.message}</p>
         )}
       </div>
       <div className="space-y-2">
-        <Label htmlFor="imageUrl">Image URL</Label>
+        <Label htmlFor="imageUrl" className="text-base">
+          Image URL
+        </Label>
         <Input type="text" id="imageUrl" {...register("imageUrl")} />
         {errors.imageUrl && (
           <p className="text-red-500">{errors.imageUrl.message}</p>
         )}
       </div>
       <div className="space-y-2">
-        <Label htmlFor="age">Age</Label>
+        <Label htmlFor="age" className="text-base">
+          Age
+        </Label>
         <Input type="number" id="age" {...register("age")} />
         {errors.age && <p className="text-red-500">{errors.age.message}</p>}
       </div>
       <div className="space-y-2">
-        <Label htmlFor="notes">Notes</Label>
+        <Label htmlFor="notes" className="text-base">
+          Notes
+        </Label>
         <Textarea id="notes" rows={6} {...register("notes")} />
         {errors.notes && <p className="text-red-500">{errors.notes.message}</p>}
       </div>

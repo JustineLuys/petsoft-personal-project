@@ -1,5 +1,6 @@
 "use client";
 import { addPet, deletePet, editPet } from "@/lib/actions";
+import { useSearchFormContext } from "@/lib/hooks";
 import { petFormSchema } from "@/lib/schema";
 import { Pet } from "@prisma/client";
 import {
@@ -11,7 +12,7 @@ import {
 } from "react";
 
 type TPetContext = {
-  sortedOptimisticPets: Pet[];
+  optimisticAndFilteredPets: Pet[];
   selectedPetId: string | null;
   selectedPet: Pet | undefined;
   handleSelectedPetId: (id: string) => void;
@@ -35,6 +36,8 @@ export default function PetContextProvider({
   pets,
 }: PetContextProviderProps) {
   const [selectedPetId, setSelectedPetId] = useState<string | null>(null);
+  const { searchText } = useSearchFormContext();
+
   const [optimisticPets, setOptimisticPets] = useOptimistic(
     pets,
     (state, { action, payload }) => {
@@ -53,15 +56,15 @@ export default function PetContextProvider({
     }
   );
 
-  // Derived state
-  const sortedOptimisticPets = useMemo(
-    () => [...optimisticPets].sort((a, b) => a.name.localeCompare(b.name)),
-    [optimisticPets]
-  );
+  const optimisticAndFilteredPets = !searchText
+    ? optimisticPets
+    : optimisticPets.filter((pet) =>
+        pet.name.toLowerCase().includes(searchText)
+      );
 
   const selectedPet = useMemo(
-    () => sortedOptimisticPets.find((pet) => pet.id === selectedPetId),
-    [selectedPetId, sortedOptimisticPets]
+    () => optimisticPets.find((pet) => pet.id === selectedPetId),
+    [selectedPetId, optimisticPets]
   );
 
   // handlers
@@ -97,7 +100,7 @@ export default function PetContextProvider({
 
     const error = await editPet(validatedPet.data, petId);
 
-    if (error && typeof error !== "string") return error.message;
+    if (error) return error.message;
     return null;
   };
 
@@ -117,7 +120,7 @@ export default function PetContextProvider({
   return (
     <PetContext.Provider
       value={{
-        sortedOptimisticPets,
+        optimisticAndFilteredPets,
         selectedPetId,
         selectedPet,
         handleSelectedPetId,

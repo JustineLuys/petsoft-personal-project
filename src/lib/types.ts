@@ -1,6 +1,11 @@
 import { z } from "zod";
-import { petFormSchema } from "./schema";
+import { logInFormSchema, petFormSchema, signUpFormSchema } from "./schema";
 
 export type TPetForm = z.infer<typeof petFormSchema>;
 
 export type PetFormActions = "add" | "edit";
+
+export type AuthType = "login" | "signup";
+
+export type TLogInData = z.infer<typeof logInFormSchema>;
+export type TSignUpData = z.infer<typeof signUpFormSchema>;
