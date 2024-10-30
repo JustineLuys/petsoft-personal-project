@@ -102,7 +102,6 @@ const config = {
       if (user) {
         token.hasAccess = user.hasAccess;
       }
-      console.log(token);
       if (trigger === "update") {
         const user = await getUserByEmail(token.email);
         token.hasAccess = user!.hasAccess;
