@@ -28,7 +28,7 @@ export default function PetListItem({
         width={50}
         className="h-[60px] w-[60px] rounded-full object-cover"
       />
-      <p className="text-xl leading">{pet.name}</p>
+      <p className="text-xl leading max-w-full truncate">{pet.name}</p>
     </li>
   );
 }

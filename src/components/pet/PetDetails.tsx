@@ -17,7 +17,7 @@ export default function PetDetails() {
   if (!pets.length) return <EmptyPets />;
   if (!selectedPet) return <EmptyPetDetails />;
   return (
-    <section className="h-full text-black bg-black/[3%]">
+    <section className="h-full text-black bg-black/[3%] w-full">
       <div className="h-[150px] bg-white flex items-center justify-between px-4 md:px-10">
         <div className="flex items-center gap-4 xl:gap-6">
           <Image
@@ -50,7 +50,7 @@ export default function PetDetails() {
       <div className="flex items-center mt-10 justify-between m-auto w-[60%] text-center">
         <div className="space-y-4 ">
           <p className="text-xl">OWNER NAME</p>
-          <p className="text-xl max-w-[130px]truncate">{selectedPet.name}</p>
+          <p className="text-xl max-w-[130px] truncate">{selectedPet.name}</p>
         </div>
         <div className="space-y-4">
           <p className="text-xl">Age</p>
