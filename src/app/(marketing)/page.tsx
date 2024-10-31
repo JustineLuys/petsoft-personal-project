@@ -15,7 +15,7 @@ export default function Home() {
         height={500}
         className="w-auto h-[31.25rem]"
       ></Image>
-      <div className="h-[31.25rem] w-[34.3rem] flex flex-col gap-8 items-center text-center lg:text-left lg:items-start justify-center transition">
+      <div className="h-[50%] w-[70%] xl:w-[30%] flex flex-col m-4 gap-8 items-center text-center lg:text-left lg:items-start justify-center transition">
         <Link href="/">
           <Logo />
         </Link>

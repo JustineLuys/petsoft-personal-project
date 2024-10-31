@@ -18,7 +18,7 @@ export default function PetDetails() {
   if (!selectedPet) return <EmptyPetDetails />;
   return (
     <section className="h-full text-black bg-black/[3%]">
-      <div className="h-[150px] bg-white flex items-center justify-between px-10">
+      <div className="h-[150px] bg-white flex items-center justify-between px-4 md:px-10">
         <div className="flex items-center gap-6">
           <Image
             src={selectedPet.imageUrl}
@@ -29,8 +29,8 @@ export default function PetDetails() {
           />
           <h2 className="text-3xl font-bold">{selectedPet.name}</h2>
         </div>
-        <div className="flex items-center gap-4">
-          <PetButton actionType="edit" />
+        <div className="flex flex-row md:flex-col lg:flex-row items-center gap-4">
+          <PetButton actionType="edit" className="w-[110px]" />
           <Button
             disabled={isPending}
             variant="destructive"

@@ -20,7 +20,6 @@ export const POST = async (req: NextRequest) => {
       status: 400,
     });
   }
-
   switch (event.type) {
     case "checkout.session.completed":
       const customerEmail = event.data.object.customer_email;
