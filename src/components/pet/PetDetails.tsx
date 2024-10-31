@@ -55,7 +55,7 @@ export default function PetDetails() {
           <p className="text-xl">{selectedPet.age}</p>
         </div>
       </div>
-      <section className="h-[55%] w-[90%] bg-white mt-8 m-auto rounded-lg shadow-lg pt-8 pl-8">
+      <section className="h-[53%] w-[90%] bg-white mt-8 m-auto rounded-lg shadow-lg pt-8 pl-8">
         <p className="text-lg">{selectedPet.notes}</p>
       </section>
     </section>
