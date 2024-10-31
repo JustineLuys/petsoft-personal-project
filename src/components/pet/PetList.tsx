@@ -15,7 +15,7 @@ export default function PetList() {
       {!pets.length ? (
         <EmptyPetList />
       ) : (
-        <ul className="max-w-[600px]">
+        <ul className="w-full">
           {pets.map((pet) => (
             <PetListItem
               key={pet.id}

@@ -18,8 +18,8 @@ export default function PetDetails() {
   if (!selectedPet) return <EmptyPetDetails />;
   return (
     <section className="h-full text-black bg-black/[3%] w-full">
-      <div className="h-[150px] bg-white flex items-center justify-between px-4 md:px-10">
-        <div className="flex items-center gap-4 xl:gap-6">
+      <div className="h-[250px] md:h-[150px] bg-white flex flex-col md:flex-row items-center gap-6 p-4 md:p-0 md:justify-between px-4 md:px-10">
+        <div className="flex flex-col items-center md:flex-row gap-4 xl:gap-6">
           <Image
             src={selectedPet.imageUrl}
             alt="Selected Pet"
@@ -27,12 +27,11 @@ export default function PetDetails() {
             width={100}
             className="rounded-full h-[90px] w-[90px] object-cover"
           />
-          <h2 className="text-3xl font-bold truncate xl:truncate-none max-w-[130px] lg:max-w-[300px]">
+          <h2 className="text-3xl font-bold truncate xl:truncate-none max-w-[180px] lg:max-w-[300px]">
             {selectedPet.name}
           </h2>
         </div>
-        <div className="flex flex-col md:flex-col lg:flex-row items-center gap-4 mr-[12px]">
-          <PetButton actionType="edit" className="w-[110px]" />
+        <div className="flex flex-row md:flex-col-reverse lg:flex-row items-center gap-4 mr-[12px]">
           <Button
             disabled={isPending}
             variant="destructive"
@@ -45,6 +44,7 @@ export default function PetDetails() {
           >
             <p className="text-lg">Checkout</p>
           </Button>
+          <PetButton actionType="edit" className="w-[110px]" />
         </div>
       </div>
       <div className="flex items-center mt-10 justify-between m-auto w-[60%] text-center">
@@ -57,7 +57,7 @@ export default function PetDetails() {
           <p className="text-xl">{selectedPet.age}</p>
         </div>
       </div>
-      <section className="h-[53%] w-[90%] bg-white mt-8 m-auto rounded-lg shadow-lg pt-8 pl-8">
+      <section className="h-[40%] lg:h-[53%] w-[90%] bg-white mt-8 m-auto rounded-lg shadow-lg pt-8 pl-8">
         <p className="text-lg">{selectedPet.notes}</p>
       </section>
     </section>
