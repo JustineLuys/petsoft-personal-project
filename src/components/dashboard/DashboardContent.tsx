@@ -10,7 +10,7 @@ export default function DashboardContent() {
         <SearchForm />
       </div>
       <div className="md:row-start-2 relative md:row-span-full shadow-xl h-[500px] transition md:h-full md:col-start-1 md:col-span-1">
-        <ContentBlock className="overflow-hidden hide-scrollbar ">
+        <ContentBlock className="overflow-scroll hidden-scrollbar">
           <PetList />
         </ContentBlock>
       </div>
