@@ -14,7 +14,7 @@ export default function PetListItem({
   return (
     <li
       className={cn(
-        "h-[80px] text-black border-b border-black/[5%]  flex items-center pl-4 shadow-sm bg-white/50 gap-4 cursor-pointer hover:bg-black/[3%] transition",
+        "h-[80px] text-black border-b border-black/[5%] flex items-center pl-4 shadow-sm bg-white/50 gap-4 cursor-pointer hover:bg-black/[3%] transition",
         {
           "bg-black/[3%]": pet.id === selectedPetId,
         }
@@ -28,7 +28,7 @@ export default function PetListItem({
         width={50}
         className="h-[60px] w-[60px] rounded-full object-cover"
       />
-      <p className="text-xl leading">{pet.name}</p>
+      <p className="text-xl leading truncate max-w-[40%]">{pet.name}</p>
     </li>
   );
 }
