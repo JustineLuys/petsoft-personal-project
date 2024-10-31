@@ -35,9 +35,9 @@ export default function PetForm({ onFormSubmit, actionType }: PetFormProps) {
   });
 
   const handleAction = async () => {
-    onFormSubmit();
     const result = await trigger();
     if (!result) return;
+    onFormSubmit();
 
     toast.success(
       `Pet has been successfully ${

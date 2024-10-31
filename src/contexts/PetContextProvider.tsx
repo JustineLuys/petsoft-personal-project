@@ -63,7 +63,7 @@ export default function PetContextProvider({
   const optimisticAndFilteredPets = !searchText
     ? optimisticPets
     : optimisticPets.filter((pet) =>
-        pet.name.toLowerCase().includes(searchText)
+        pet.name.toLowerCase().includes(searchText.toLowerCase())
       );
 
   const selectedPet = useMemo(
