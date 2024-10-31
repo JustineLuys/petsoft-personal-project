@@ -7,15 +7,15 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="bg-appColor min-h-screen pt-6 flex flex-col lg:flex-row gap-2 lg:gap-[3.5rem] items-center justify-center transition">
+    <main className="bg-appColor min-h-screen pt-6 px-6 flex flex-col lg:flex-row gap-4 lg:gap-[2rem] xl:gap-[3.5rem] items-center justify-center transition">
       <Image
         src="https://bytegrad.com/course-assets/react-nextjs/petsoft-preview.png"
         alt="Petsoft"
         width={500}
         height={500}
-        className="w-auto h-[31.25rem]"
-      ></Image>
-      <div className="h-[50%] w-[70%] xl:w-[30%] flex flex-col m-4 gap-8 items-center text-center lg:text-left lg:items-start justify-center transition">
+        className="w-auto h-[22rem] md:h-[31.25rem]"
+      />
+      <div className="h-[50%] mt-[3.5 rem] w-[70%] xl:w-[30%] flex flex-col m-4 gap-8 items-center text-center lg:text-left lg:items-start justify-center transition">
         <Link href="/">
           <Logo />
         </Link>
