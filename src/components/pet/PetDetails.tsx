@@ -19,7 +19,7 @@ export default function PetDetails() {
   return (
     <section className="h-full text-black bg-black/[3%]">
       <div className="h-[150px] bg-white flex items-center justify-between px-4 md:px-10">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-4">
           <Image
             src={selectedPet.imageUrl}
             alt="Selected Pet"
@@ -27,7 +27,9 @@ export default function PetDetails() {
             width={100}
             className="rounded-full h-[90px] w-[90px] object-cover"
           />
-          <h2 className="text-3xl font-bold">{selectedPet.name}</h2>
+          <h2 className="text-3xl font-bold truncate max-w-[130px]">
+            {selectedPet.name}
+          </h2>
         </div>
         <div className="flex flex-col md:flex-col lg:flex-row items-center gap-4 mr-[12px]">
           <PetButton actionType="edit" className="w-[110px]" />
