@@ -19,7 +19,7 @@ export default function Home() {
         <Link href="/">
           <Logo />
         </Link>
-        <H1>
+        <H1 className="w-[500px]">
           Manage your <span className="font-extrabold">pet daycare</span> with
           ease
         </H1>
