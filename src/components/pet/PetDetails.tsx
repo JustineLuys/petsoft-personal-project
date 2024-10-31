@@ -29,7 +29,7 @@ export default function PetDetails() {
           />
           <h2 className="text-3xl font-bold">{selectedPet.name}</h2>
         </div>
-        <div className="flex flex-row md:flex-col lg:flex-row items-center gap-4">
+        <div className="flex flex-col md:flex-col lg:flex-row items-center gap-4 mr-[15px]">
           <PetButton actionType="edit" className="w-[110px]" />
           <Button
             disabled={isPending}
