@@ -27,7 +27,7 @@ export default function PetDetails() {
             width={100}
             className="rounded-full h-[90px] w-[90px] object-cover"
           />
-          <h2 className="text-3xl font-bold truncate max-w-[130px]">
+          <h2 className="text-3xl font-bold truncate md:truncate-none max-w-[130px]">
             {selectedPet.name}
           </h2>
         </div>
