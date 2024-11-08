@@ -1,6 +1,7 @@
 "use client";
 import { PetContext } from "@/contexts/PetContextProvider";
 import { SearchFormContext } from "@/contexts/SearchFormContextProvider";
+import { UsersContext } from "@/contexts/UsersContextProvider";
 import { useContext } from "react";
 
 export const usePetContext = () => {
@@ -21,6 +22,15 @@ export const useSearchFormContext = () => {
   return context;
 };
 
+export const useUsersContext = () => {
+  const context = useContext(UsersContext);
+  if (!context) {
+    throw new Error(
+      "useUsersContext must be used within a UsersContextProvider"
+    );
+  }
+  return context;
+};
 // export function useDebounce<T>(value: T, ms: number = 2000): T {
 //   const [debouncedValue, setDebouncedValue] = useState(value);
 

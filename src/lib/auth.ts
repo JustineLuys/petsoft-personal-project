@@ -47,9 +47,9 @@ const config = {
       const isTryingToAccessApp = request.nextUrl.pathname.includes("/app");
       const isTryingToLogIn = request.nextUrl.pathname.includes("/login");
       const isTryingToSignUp = request.nextUrl.pathname.includes("/signup");
-
       const isLoggedIn = Boolean(auth?.user);
       const hasAccess = auth?.user.hasAccess;
+      const isAdmin = auth?.user.role === "ADMIN";
 
       if (!isLoggedIn && !isTryingToAccessApp) {
         return true;
@@ -58,6 +58,18 @@ const config = {
       if (isLoggedIn && isTryingToAccessApp) {
         if (!hasAccess) {
           return NextResponse.redirect(new URL("/payment", request.nextUrl));
+        }
+        if (isAdmin) {
+          if (request.nextUrl.pathname.endsWith("dashboard")) {
+            console.log("ture");
+            return NextResponse.redirect(
+              new URL("/admin/dashboard", request.nextUrl)
+            );
+          } else if (request.nextUrl.pathname.endsWith("account")) {
+            return NextResponse.redirect(
+              new URL("/admin/account", request.nextUrl)
+            );
+          }
         }
         return true;
       }
@@ -71,17 +83,23 @@ const config = {
               new URL("/app/dashboard", request.nextUrl)
             );
           }
-        } else {
-          if (request.nextUrl.pathname === "/payment") {
-            if (hasAccess) {
-              return NextResponse.redirect(
-                new URL("/app/dashboard", request.nextUrl)
-              );
-            }
-            return true;
+        } else if (request.nextUrl.pathname === "/payment") {
+          if (hasAccess) {
+            return NextResponse.redirect(
+              new URL("/app/dashboard", request.nextUrl)
+            );
           }
+          return true;
+        } else if (request.nextUrl.pathname.includes("/admin")) {
+          if (!isAdmin) {
+            return NextResponse.redirect(
+              new URL("/app/dashboard", request.nextUrl)
+            );
+          }
+          return true;
+        } else if (request.nextUrl.pathname.endsWith("/account") && !isAdmin) {
           return NextResponse.redirect(
-            new URL("/app/dashboard", request.nextUrl)
+            new URL("/app/account", request.nextUrl)
           );
         }
       }
@@ -89,18 +107,11 @@ const config = {
       if (!isLoggedIn && isTryingToAccessApp) {
         return false;
       }
-
-      // if (isLoggedIn && !isTryingToAccessApp) {
-      //   return NextResponse.redirect(
-      //     new URL("/app/dashboard", request.nextUrl)
-      //   );
-      // }
-
-      // return false;
     },
     jwt: async ({ token, user, trigger }) => {
       if (user) {
         token.hasAccess = user.hasAccess;
+        token.role = user.role;
       }
       if (trigger === "update") {
         const user = await getUserByEmail(token.email);
@@ -112,6 +123,7 @@ const config = {
       if (session.user) {
         session.user.id = token.sub!;
         session.user.hasAccess = token.hasAccess;
+        session.user.role = token.role;
       }
       return session;
     },

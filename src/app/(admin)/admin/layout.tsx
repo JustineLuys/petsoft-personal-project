@@ -1,32 +1,35 @@
 import BackgroundPattern from "@/components/layout/Background";
 import Footer from "@/components/layout/Footer";
 import Header from "@/components/layout/Header";
-import PetContextProvider from "@/contexts/PetContextProvider";
 import SearchFormContextProvider from "@/contexts/SearchFormContextProvider";
-import { checkAuth, getPetsByUserId } from "@/lib/server-utils";
+import UsersContextProvider from "@/contexts/UsersContextProvider";
+import { checkAdminAuth, getAllPets, getUsersData } from "@/lib/server-utils";
 import type { Metadata } from "next";
 import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
-  title: "PetSoft Dashboard",
+  title: "Admin Dashboard",
   description: "PetSoft Dashboard",
 };
 
-export default async function AppLayout({
+export default async function AdminLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await checkAuth();
+  const session = await checkAdminAuth();
+  const usersData = await getUsersData();
+  const pets = await getAllPets();
 
-  const pets = await getPetsByUserId(session.user.id!);
   return (
     <>
       <BackgroundPattern />
       <div className="min-h-screen flex flex-col text-white p-2 max-w-[1300px] mx-auto">
         <Header username={session.user.name!} />
         <SearchFormContextProvider>
-          <PetContextProvider pets={pets}>{children}</PetContextProvider>
+          <UsersContextProvider users={usersData} pets={pets}>
+            {children}
+          </UsersContextProvider>
         </SearchFormContextProvider>
         <Footer />
       </div>

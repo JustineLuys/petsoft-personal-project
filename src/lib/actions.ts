@@ -23,13 +23,15 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string);
 
 // --- User Actions ---
 export const signUp = async (userData: unknown) => {
+  console.log(userData);
+
   if (!(userData instanceof FormData)) {
     return "Invalid data";
   }
-  const validatedUserData = validateData(signUpFormSchema, {
-    email: userData.get("email"),
-    password: userData.get("password"),
-  });
+  console.log(userData.entries());
+  const newUserData = Object.fromEntries(userData.entries());
+
+  const validatedUserData = validateData(signUpFormSchema, newUserData);
   if ("message" in validatedUserData) {
     return validatedUserData.message;
   }
@@ -155,10 +157,10 @@ export const createCheckoutSession = async () => {
 
   const checkoutSession: Stripe.Checkout.Session =
     await stripe.checkout.sessions.create({
-      customer_email: session.user.email ?? "",
+      customer_email: session.user.email || "default@example.com",
       line_items: [
         {
-          price: process.env.STRIPE_PRICE_ID,
+          price: process.env.STRIPE_PRICE_ID as string,
           quantity: 1,
         },
       ],
@@ -168,7 +170,9 @@ export const createCheckoutSession = async () => {
       metadata: {
         userId: session.user.id,
       },
-    });
+    } as Stripe.Checkout.SessionCreateParams);
 
   redirect(checkoutSession.url!);
 };
+
+// --- Admin Actions ---

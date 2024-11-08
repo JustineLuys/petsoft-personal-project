@@ -39,6 +39,23 @@ export default function AuthForm({ type }: { type: AuthType }) {
 
   return (
     <form action={handleAction} className="flex flex-col gap-4 items-center">
+      {type === "signup" && (
+        <div className="space-y-2">
+          <Label htmlFor="name" className="text-lg">
+            Name
+          </Label>
+          <Input
+            id="name"
+            type="name"
+            {...register("name")}
+            className="border border-black/[30%]"
+          />
+          {errors.name && (
+            <div className="text-red-500 italic">{`${errors.name.message}`}</div>
+          )}
+        </div>
+      )}
+
       <div className="space-y-2">
         <Label htmlFor="email" className="text-lg">
           Email

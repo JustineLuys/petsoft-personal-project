@@ -7,15 +7,25 @@ import { auth } from "./auth";
 import { redirect } from "next/navigation";
 import { User } from "@prisma/client";
 
-export const getPets = async () => {
-  const session = await checkAuth();
-
+export const getPetsByUserId = async (userId: string) => {
   const pets = await prisma.pet.findMany({
     where: {
-      userId: session.user!.id,
+      userId,
     },
   });
   return pets;
+};
+
+export const getAllPets = async () => {
+  return await prisma.pet.findMany();
+};
+export const getUsersData = async () => {
+  const users = await prisma.user.findMany({
+    where: {
+      role: "USER",
+    },
+  });
+  return users;
 };
 
 export const getPet = unstable_cache(
@@ -33,6 +43,7 @@ export const getPet = unstable_cache(
 export const prepareUserData = async (data: TSignUpData) => {
   const hashedPassword = await bcrypt.hash(data.password, 10);
   const userData = {
+    name: data.name,
     email: data.email,
     hashedPassword,
   };
@@ -82,6 +93,13 @@ export const checkAuth = async () => {
   return session;
 };
 
+export const checkAdminAuth = async () => {
+  const session = await auth();
+  if (session?.user.role !== "ADMIN") {
+    redirect("/admin/login");
+  }
+  return session;
+};
 export const getUserByEmail = async (email: User["email"]) => {
   const user = await prisma.user.findUnique({
     where: {

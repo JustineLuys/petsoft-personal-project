@@ -16,13 +16,14 @@ const routes = [
   },
 ];
 
-export default function Header() {
+export default function Header({ username }: { username?: string }) {
   const activePath = usePathname();
   return (
     <header className="flex items-center justify-between border-b border-white/20 pb-2">
       <Link href="/">
         <Logo />
       </Link>
+      <p className="mr-auto ml-5 text-md">Hi, {username}</p>
       <HeaderList activePath={activePath} />
     </header>
   );

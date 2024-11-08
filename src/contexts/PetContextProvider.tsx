@@ -39,7 +39,6 @@ export default function PetContextProvider({
 }: PetContextProviderProps) {
   const [selectedPetId, setSelectedPetId] = useState<string | null>(null);
   const { searchText } = useSearchFormContext();
-
   const [optimisticPets, setOptimisticPets] = useOptimistic(
     pets,
     (state, { action, payload }) => {
