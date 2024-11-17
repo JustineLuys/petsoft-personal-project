@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main className="bg-appColor min-h-screen min-w-screen pt-6 px-6 flex flex-col xl:flex-row gap-4 lg:gap-[2rem] xl:gap-[3.5rem] items-center justify-center transition">
+    <main className="bg-appColor min-h-screen max-w-screen pt-6 px-6 flex flex-col xl:flex-row gap-4 lg:gap-[2rem] xl:gap-[3.5rem] items-center justify-center transition">
       <Image
         src="https://bytegrad.com/course-assets/react-nextjs/petsoft-preview.png"
         alt="Petsoft"
@@ -19,7 +19,7 @@ export default function Home() {
         <Link href="/">
           <Logo />
         </Link>
-        <H1 className="w-[90vw]">
+        <H1 className="w-[90%]">
           Manage your <span className="font-extrabold">pet daycare</span> with
           ease
         </H1>
